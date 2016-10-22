@@ -41,4 +41,3 @@ D:\MVC5 Course\Homework\MVC5Course_Homework01\CustomerMgmt\bin\EntityFramework.d
 D:\MVC5 Course\Homework\MVC5Course_Homework01\CustomerMgmt\bin\EntityFramework.SqlServer.dll
 D:\MVC5 Course\Homework\MVC5Course_Homework01\CustomerMgmt\bin\EntityFramework.xml
 D:\MVC5 Course\Homework\MVC5Course_Homework01\CustomerMgmt\bin\EntityFramework.SqlServer.xml
-D:\MVC5 Course\Homework\MVC5Course_Homework01\CustomerMgmt\obj\Debug\CustomerMgmt.csprojResolveAssemblyReference.cache
