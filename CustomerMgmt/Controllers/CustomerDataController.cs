@@ -59,5 +59,13 @@ namespace CustomerMgmt.Controllers
 			var customer = db.客戶資料.FirstOrDefault(x => x.Id.Equals(Id));
 			return View(customer);
 		}
+
+		public ActionResult Delete(int Id)
+		{
+			var customer = db.客戶資料.FirstOrDefault(x => x.Id.Equals(Id));
+			customer.是否已刪除 = true;
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
 	}
 }
