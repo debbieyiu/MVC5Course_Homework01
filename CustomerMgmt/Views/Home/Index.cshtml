@@ -2,26 +2,26 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="jumbotron" style="background-color:#333333; color: #ffffff;">
 	<h1>客戶管理</h1>
 	<p class="lead">維護客戶資料、聯絡人、及銀行帳戶明細</p>
-	@*<p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+	
 </div>
 
 <div class="row">
 	<div class="col-md-4">
-		<h2>客戶資料管理</h2>
+		<h2>@Html.ActionLink("客戶資料", "Index", "CustomerData", null, new { @style = "color: #ffffff;"})</h2>
 		<p></p>
-		<p>@Html.ActionLink("客戶資料管理", "Index", "CustomerData", null, new { @class = "btn btn-primary" })</p>
+		<p>@Html.ActionLink(" ", "Index", "CustomerData", null, new { @class = "glyphicon glyphicon-user" })</p>
 	</div>
 	<div class="col-md-4">
-		<h2>客戶聯絡人管理</h2>
+		<h2>@Html.ActionLink("客戶聯絡人", "Index", "CustomerContact", null, new { @style = "color: #ffffff;" })</h2>
 		<p></p>
-		<p>@Html.ActionLink("客戶聯絡人管理", "Index", "CustomerContact", null, new { @class = "btn btn-primary" })</p>
+		<p>@Html.ActionLink(" ", "Index", "CustomerContact", null, new { @class = "glyphicon glyphicon-phone-alt" })</p>
 	</div>
 	<div class="col-md-4">
-		<h2>客戶銀行帳戶管理</h2>
+		<h2>@Html.ActionLink("客戶銀行帳戶", "Index", "CustomerBankAccount", null, new { @style = "color: #ffffff;" })</h2>
 		<p></p>
-		<p>@Html.ActionLink("客戶銀行帳戶管理", "Index", "CustomerBankAccount", null, new { @class = "btn btn-primary" })</p>
+		<p>@Html.ActionLink(" ", "Index", "CustomerBankAccount", null, new { @class = "glyphicon glyphicon-credit-card" })</p>
 	</div>
 </div>

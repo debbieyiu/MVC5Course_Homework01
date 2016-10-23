@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
@@ -52,6 +53,19 @@ namespace CustomerMgmt.Controllers
 		{
 			var customer = db.客戶資料.FirstOrDefault(x => x.Id.Equals(Id));
 			return View(customer);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Edit([Bind(Include = "Id,客戶名稱,統一編號,電話,傳真,地址,Email,是否已刪除")] 客戶資料 客戶資料)
+		{
+			if (ModelState.IsValid)
+			{
+				db.Entry(客戶資料).State = EntityState.Modified;
+				db.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			return View(客戶資料);
 		}
 
 		public ActionResult Details(int Id)

@@ -130,6 +130,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomerBankAccountController.cs" />
+    <Compile Include="Controllers\CustomerContactController.cs" />
     <Compile Include="Controllers\CustomerDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,6 +220,16 @@
     <Content Include="Views\CustomerData\Create.cshtml" />
     <Content Include="Views\CustomerData\Edit.cshtml" />
     <Content Include="Views\CustomerData\Details.cshtml" />
+    <Content Include="Views\CustomerContact\Create.cshtml" />
+    <Content Include="Views\CustomerContact\Delete.cshtml" />
+    <Content Include="Views\CustomerContact\Details.cshtml" />
+    <Content Include="Views\CustomerContact\Edit.cshtml" />
+    <Content Include="Views\CustomerContact\Index.cshtml" />
+    <Content Include="Views\CustomerBankAccount\Create.cshtml" />
+    <Content Include="Views\CustomerBankAccount\Delete.cshtml" />
+    <Content Include="Views\CustomerBankAccount\Details.cshtml" />
+    <Content Include="Views\CustomerBankAccount\Edit.cshtml" />
+    <Content Include="Views\CustomerBankAccount\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
