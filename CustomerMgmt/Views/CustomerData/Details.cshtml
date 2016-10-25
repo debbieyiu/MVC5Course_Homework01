@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@*Details*@</h2>
+<h2></h2>
 
 <div>
     <h4>客戶資料 - 明細</h4>
@@ -69,6 +69,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink(" ", "Edit", new { id = Model.Id }, new { @class = "glyphicon glyphicon-edit" }) 
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) 
+    @Html.ActionLink("Back to list", "Index", null, new { @class = "btn btn-default" })
 </p>

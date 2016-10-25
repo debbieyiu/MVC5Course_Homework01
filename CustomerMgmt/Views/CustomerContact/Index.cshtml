@@ -2,12 +2,13 @@
 
 @{
     ViewBag.Title = "Index";
+	var preselectId = TempData["id"];
 }
 
-<h2>Index</h2>
+<h2>客戶聯絡人</h2>
 
 <p>
-    @Html.ActionLink(" ", "Create", null, new { @class = "glyphicon glyphicon-plus" })
+    @Html.ActionLink(" ", "Create", new { id = preselectId }, new { @class = "glyphicon glyphicon-plus" })
 </p>
 <table class="table">
     <tr>

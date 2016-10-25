@@ -23,6 +23,7 @@ namespace CustomerMgmt.Controllers
 				customerBankInfo = customerBankInfo.Where(x => x.客戶Id.Equals(id)).ToList();
 
 			}
+			TempData["id"] = id;
 			return View(customerBankInfo);
         }
 
@@ -42,9 +43,14 @@ namespace CustomerMgmt.Controllers
         }
 
         // GET: CustomerBankAccount/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱");
+			var customerData = db.客戶資料.ToList();
+			if (id != null)
+			{
+				customerData = customerData.Where(x => x.Id.Equals(id)).ToList();
+			}
+			ViewBag.客戶Id = new SelectList(customerData, "Id", "客戶名稱");
             return View();
         }
 

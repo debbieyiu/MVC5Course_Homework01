@@ -22,7 +22,8 @@ namespace CustomerMgmt.Controllers
 			{
 				customerContact = customerContact.Where(contact => contact.客戶Id.Equals(id)).ToList();
 			}
-				return View(customerContact);
+			TempData["id"] = id;
+			return View(customerContact);
             
         }
 
@@ -42,10 +43,16 @@ namespace CustomerMgmt.Controllers
         }
 
         // GET: CustomerContact/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱");
-            return View();
+			var customerData = db.客戶資料.ToList();
+			if (id != null)
+			{
+				customerData = customerData.Where(x => x.Id.Equals(id)).ToList();
+			}
+			ViewBag.客戶Id = new SelectList(customerData, "Id", "客戶名稱");
+
+			return View();
         }
 
         // POST: CustomerContact/Create
@@ -57,9 +64,24 @@ namespace CustomerMgmt.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.客戶聯絡人.Add(客戶聯絡人);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+				var duplicateCount = db.客戶聯絡人
+					.Where
+					( contact => 
+						contact.客戶Id.Equals(客戶聯絡人.客戶Id) && 
+						contact.Email.Equals(客戶聯絡人.Email)
+					).ToList().Count;
+
+				if (duplicateCount.Equals(0))
+				{
+					db.客戶聯絡人.Add(客戶聯絡人);
+					db.SaveChanges();
+					return RedirectToAction("Index");
+				}
+				else
+				{
+					ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
+					return View(客戶聯絡人);
+				}
             }
 
             ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);

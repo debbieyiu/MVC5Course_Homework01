@@ -54,6 +54,17 @@
           <Property Name="帳戶號碼" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="是否已刪除" Type="bit" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'D:\MVC5 COURSE\HOMEWORK\MVC5COURSE_HOMEWORK01\CUSTOMERMGMT\APP_DATA\客戶資料.MDF.dbo.vw_CustomerList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_CustomerList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="客戶名稱" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="聯絡人數量" Type="int" Nullable="false" />
+          <Property Name="銀行帳戶數量" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_客戶聯絡人_客戶資料">
           <End Role="客戶資料" Type="Self.客戶資料" Multiplicity="1" />
           <End Role="客戶聯絡人" Type="Self.客戶聯絡人" Multiplicity="*" />
@@ -83,6 +94,14 @@
           <EntitySet Name="客戶聯絡人" EntityType="Self.客戶聯絡人" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="客戶資料" EntityType="Self.客戶資料" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="客戶銀行資訊" EntityType="Self.客戶銀行資訊" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_CustomerList" EntityType="Self.vw_CustomerList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_CustomerList].[Id] AS [Id], 
+    [vw_CustomerList].[客戶名稱] AS [客戶名稱], 
+    [vw_CustomerList].[聯絡人數量] AS [聯絡人數量], 
+    [vw_CustomerList].[銀行帳戶數量] AS [銀行帳戶數量]
+    FROM [dbo].[vw_CustomerList] AS [vw_CustomerList]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_客戶聯絡人_客戶資料" Association="Self.FK_客戶聯絡人_客戶資料">
             <End Role="客戶資料" EntitySet="客戶資料" />
             <End Role="客戶聯絡人" EntitySet="客戶聯絡人" />
@@ -186,7 +205,17 @@
             <End Role="客戶資料" EntitySet="客戶資料" />
             <End Role="客戶銀行資訊" EntitySet="客戶銀行資訊" />
           </AssociationSet>
+          <EntitySet Name="vw_CustomerList" EntityType="CustomerModel.vw_CustomerList" />
         </EntityContainer>
+        <EntityType Name="vw_CustomerList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="客戶名稱" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="聯絡人數量" Type="Int32" Nullable="false" />
+          <Property Name="銀行帳戶數量" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -243,6 +272,16 @@
                 <ScalarProperty Name="分行代碼" ColumnName="分行代碼" />
                 <ScalarProperty Name="帳戶名稱" ColumnName="帳戶名稱" />
                 <ScalarProperty Name="帳戶號碼" ColumnName="帳戶號碼" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_CustomerList">
+            <EntityTypeMapping TypeName="CustomerModel.vw_CustomerList">
+              <MappingFragment StoreEntitySet="vw_CustomerList">
+                <ScalarProperty Name="銀行帳戶數量" ColumnName="銀行帳戶數量" />
+                <ScalarProperty Name="聯絡人數量" ColumnName="聯絡人數量" />
+                <ScalarProperty Name="客戶名稱" ColumnName="客戶名稱" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
