@@ -17,6 +17,7 @@ namespace CustomerMgmt.Controllers
         // GET: CustomerContact
         public ActionResult Index(int? id)
         {
+			//TODO: search keyword
 			var customerContact = db.客戶聯絡人.ToList();
 			if (id != null)
 			{
@@ -30,17 +31,17 @@ namespace CustomerMgmt.Controllers
         // GET: CustomerContact/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            客戶聯絡人 客戶聯絡人 = db.客戶聯絡人.Find(id);
-            if (客戶聯絡人 == null)
-            {
-                return HttpNotFound();
-            }
-            return View(客戶聯絡人);
-        }
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			客戶聯絡人 客戶聯絡人 = db.客戶聯絡人.Find(id);
+			if (客戶聯絡人 == null)
+			{
+				return HttpNotFound();
+			}
+			return View(客戶聯絡人);
+		}
 
         // GET: CustomerContact/Create
         public ActionResult Create(int? id)

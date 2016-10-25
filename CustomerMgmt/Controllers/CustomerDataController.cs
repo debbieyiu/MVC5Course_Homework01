@@ -16,6 +16,7 @@ namespace CustomerMgmt.Controllers
 		// GET: CustomerData
 		public ActionResult Index()
         {
+			//TODO: search keyword
 			var data = db.客戶資料.OrderByDescending(customer => customer.Id);
 			return View(data);
 		}
