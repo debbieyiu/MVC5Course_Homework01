@@ -86,6 +86,7 @@ namespace CustomerMgmt.Controllers
 				else
 				{
 					ViewBag.客戶Id = new SelectList(db.客戶資料, "Id", "客戶名稱", 客戶聯絡人.客戶Id);
+					TempData["DuplicateEmail"] = "true";
 					return View(客戶聯絡人);
 				}
             }
