@@ -15,7 +15,7 @@ namespace CustomerMgmt.Controllers
         private CustomerEntities db = new CustomerEntities();
 
         // GET: CustomerBankAccount
-        public ActionResult Index(int? id)
+        public ActionResult Index(string search, int? id)
         {
 			//TODO: search keyword
 			var customerBankInfo = db.客戶銀行資訊.ToList();
@@ -24,6 +24,12 @@ namespace CustomerMgmt.Controllers
 				customerBankInfo = customerBankInfo.Where(x => x.客戶Id.Equals(id)).ToList();
 
 			}
+
+			if (!string.IsNullOrEmpty(search))
+			{
+				customerBankInfo = customerBankInfo.Where(bank => bank.帳戶名稱.Contains(search)).ToList();
+			}
+
 			TempData["id"] = id;
 			return View(customerBankInfo);
         }

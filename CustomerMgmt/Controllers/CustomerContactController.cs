@@ -15,7 +15,7 @@ namespace CustomerMgmt.Controllers
         private CustomerEntities db = new CustomerEntities();
 
         // GET: CustomerContact
-        public ActionResult Index(int? id)
+        public ActionResult Index(string search, int? id)
         {
 			//TODO: search keyword
 			var customerContact = db.客戶聯絡人.ToList();
@@ -23,6 +23,12 @@ namespace CustomerMgmt.Controllers
 			{
 				customerContact = customerContact.Where(contact => contact.客戶Id.Equals(id)).ToList();
 			}
+
+			if (!string.IsNullOrEmpty(search))
+			{
+				customerContact = customerContact.Where(contact => contact.姓名.Contains(search)).ToList();
+			}
+
 			TempData["id"] = id;
 			return View(customerContact);
             

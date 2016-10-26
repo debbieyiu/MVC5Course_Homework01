@@ -14,10 +14,15 @@ namespace CustomerMgmt.Controllers
 		private CustomerEntities db = new CustomerEntities();
 
 		// GET: CustomerData
-		public ActionResult Index()
+		public ActionResult Index(string search)
         {
-			//TODO: search keyword
 			var data = db.客戶資料.OrderByDescending(customer => customer.Id);
+			//TODO: search keyword
+			if (!string.IsNullOrEmpty(search))
+			{
+				data = db.客戶資料.Where(x => x.客戶名稱.Contains(search)).OrderByDescending(x => x.Id);
+			}
+			
 			return View(data);
 		}
 
