@@ -17,7 +17,6 @@ namespace CustomerMgmt.Controllers
         // GET: CustomerBankAccount
         public ActionResult Index(string search, int? id)
         {
-			//TODO: search keyword
 			var customerBankInfo = db.客戶銀行資訊.ToList();
 			if (id != null)
 			{

@@ -17,7 +17,6 @@ namespace CustomerMgmt.Controllers
 		public ActionResult Index(string search)
         {
 			var data = db.客戶資料.OrderByDescending(customer => customer.Id);
-			//TODO: search keyword
 			if (!string.IsNullOrEmpty(search))
 			{
 				data = db.客戶資料.Where(x => x.客戶名稱.Contains(search)).OrderByDescending(x => x.Id);

@@ -17,7 +17,6 @@ namespace CustomerMgmt.Controllers
         // GET: CustomerContact
         public ActionResult Index(string search, int? id)
         {
-			//TODO: search keyword
 			var customerContact = db.客戶聯絡人.ToList();
 			if (id != null)
 			{
